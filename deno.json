@@ -1,0 +1,40 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --watch ./src/main.ts",
+    "bundle": "deno bundle ./src/main.ts",
+    "compile": "deno compile --output exe --allow-read --allow-write --import-map=./import_map.json ./src/main.ts",
+    "test": "deno test",
+    "test:w": "deno test --watch"
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true,
+    "types": ["./types.d.ts"]
+  },
+  "lint": {
+    "files": {
+      "include": ["src/"],
+      "exclude": ["src/testdata/"]
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo"],
+      "exclude": ["no-unused-vars", "no-explicit-any"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/"],
+      "exclude": ["src/testdata/"]
+    },
+    "options": {
+      "useTabs": true,
+      "lineWidth": 80,
+      "indentWidth": 2,
+      "singleQuote": true,
+      "proseWrap": "preserve"
+    }
+  },
+  "importMap": "import_map.json"
+}
